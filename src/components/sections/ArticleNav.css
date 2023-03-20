@@ -1,0 +1,25 @@
+.article-nav-section {
+  border-left: 1px solid var(--border-color);
+}
+
+main > article > .article-nav-section {
+  border-top: 1px solid var(--border-color);
+}
+
+main > article > .article-nav-section > .article-nav-button {
+  background-color: transparent;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+main > article > .article-nav-section > .article-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+main > article > .article-nav-section > .article-nav-button:nth-child(2) {
+  border-left: 1px solid var(--border-color);
+}

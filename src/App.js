@@ -1,7 +1,7 @@
 import "./App.css";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import Card from "./components/card/Card";
+import Page from "./components/page/Page";
 import ParticlesBkgrd from "./components/particles/ParticlesBkgrd";
 import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main/Main";
@@ -12,7 +12,7 @@ const App = () => {
   };
 
   return (
-    <div style={{display:'flex', flexDirection: 'column', height:'100svh'}}>
+    <Page>
       <Navbar></Navbar>
       <Main></Main>
       <Particles
@@ -20,7 +20,7 @@ const App = () => {
         init={particlesInit}
         options={ParticlesBkgrd()}
       />
-    </div>
+    </Page>
   );
 };
 

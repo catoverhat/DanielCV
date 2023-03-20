@@ -50,15 +50,15 @@ main > article > .article-section {
   display: flex;
 }
 
-main > article > .article-description-section,
+/* main > article > .article-description-section,
 main > article > .article-nav-section {
   border-left: 1px solid var(--border-color);
-}
+} */
 
-main > article > .article-title-section,
+/* main > article > .article-title-section,
 main > article > .article-nav-section {
   border-top: 1px solid var(--border-color);
-}
+} */
 
 main > article:first-child > .article-image-section {
   background-image: url("https://images.unsplash.com/photo-1565626424178-c699f6601afd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80");
@@ -81,7 +81,7 @@ main > article > .article-image-section {
   background-size: cover;
 }
 
-main > article > .article-description-section {
+/* main > article > .article-description-section {
   flex-direction: column;
   justify-content: flex-end;
   padding: 4rem;
@@ -94,7 +94,7 @@ main > article > .article-description-section > p {
 
 main > article > .article-description-section > p > a:hover {
   text-decoration: underline;
-}
+} */
 
 main > article > .article-title-section {
   align-items: center;
@@ -119,8 +119,8 @@ main > article > .article-title-section > i {
   color: rgba(255, 255, 255, 0.75);
   font-size: 4rem;
 }
-/*
-main > article > .article-nav-section > .article-nav-button {
+
+/* main > article > .article-nav-section > .article-nav-button {
   background-color: transparent;
   flex-grow: 1;
   border: none;
@@ -136,7 +136,7 @@ main > article > .article-nav-section > .article-nav-button:hover {
 
 main > article > .article-nav-section > .article-nav-button:nth-child(2) {
   border-left: 1px solid var(--border-color);
-}
+} */
 
 @media (max-width: 1200px) {
   #nav-mobile-section {
@@ -194,4 +194,4 @@ main > article > .article-nav-section > .article-nav-button:nth-child(2) {
     border-bottom: 1px solid var(--border-color);
     order: 4;
   }
-} */
+}
