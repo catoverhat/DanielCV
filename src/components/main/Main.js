@@ -7,7 +7,6 @@ import { useState, useRef } from "react";
 
 const Main = () => {
   const mainRef = useRef("");
-  const mainTitleIndex = 0;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleLeftClick = () => {
@@ -55,7 +54,7 @@ const Main = () => {
       <article data-index="0" data-status="active">
         <ArticleImage></ArticleImage>
         <ArticleDescription></ArticleDescription>
-        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleTitle titleIndex={0}></ArticleTitle>
         <ArticleNav
           handleLeftClick={handleLeftClick}
           handleRightClick={handleRightClick}
@@ -65,7 +64,7 @@ const Main = () => {
       <article data-index="1" data-status="inactive">
         <ArticleImage></ArticleImage>
         <ArticleDescription></ArticleDescription>
-        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleTitle titleIndex={1}></ArticleTitle>
         <ArticleNav
           handleLeftClick={handleLeftClick}
           handleRightClick={handleRightClick}
@@ -75,7 +74,7 @@ const Main = () => {
       <article data-index="2" data-status="inactive">
         <ArticleImage></ArticleImage>
         <ArticleDescription></ArticleDescription>
-        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleTitle titleIndex={2}></ArticleTitle>
         <ArticleNav
           handleLeftClick={handleLeftClick}
           handleRightClick={handleRightClick}
@@ -85,7 +84,7 @@ const Main = () => {
       <article data-index="3" data-status="inactive">
         <ArticleImage></ArticleImage>
         <ArticleDescription></ArticleDescription>
-        <ArticleTitle mainTitleIndex={activeIndex}></ArticleTitle>
+        <ArticleTitle titleIndex={3}></ArticleTitle>
         <ArticleNav
           handleLeftClick={handleLeftClick}
           handleRightClick={handleRightClick}
