@@ -1,184 +1,95 @@
-import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import "./Main.css";
 import ArticleDescription from "../sections/ArticleDescription";
 import ArticleNav from "../sections/ArticleNav";
-
+import ArticleImage from "../sections/ArticleImage";
+import ArticleTitle from "../sections/ArticleTitle";
+import { useState, useRef } from "react";
 
 const Main = () => {
-  //   let activeIndex = 0;
+  const mainRef = useRef("");
+  const mainTitleIndex = 0;
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  //   const slides = document.getElementsByTagName("article");
+  const handleLeftClick = () => {
+    const nextIndex =
+      activeIndex - 1 >= 0
+        ? activeIndex - 1
+        : mainRef.current.childElementCount - 1;
+    setActiveIndex(nextIndex);
 
-  //   const handleLeftClick = () => {
-  //     const nextIndex =
-  //       activeIndex - 1 >= 0 ? activeIndex - 1 : slides.length - 1;
+    mainRef.current.children[activeIndex].setAttribute("data-status", "after");
 
-  //     const currentSlide = document.querySelector(
-  //         `[data-index="${activeIndex}"]`
-  //       ),
-  //       nextSlide = document.querySelector(`[data-index="${nextIndex}"]`);
+    mainRef.current.children[nextIndex].setAttribute(
+      "data-status",
+      "becoming-active-from-before"
+    );
 
-  //     currentSlide.dataset.status = "after";
+    setTimeout(() => {
+      mainRef.current.children[nextIndex].setAttribute("data-status", "active");
+      setActiveIndex(nextIndex);
+    });
+  };
 
-  //     nextSlide.dataset.status = "becoming-active-from-before";
+  const handleRightClick = () => {
+    const nextIndex =
+      activeIndex + 1 <= mainRef.current.childElementCount - 1
+        ? activeIndex + 1
+        : 0;
+    setActiveIndex(nextIndex);
 
-  //     setTimeout(() => {
-  //       nextSlide.dataset.status = "active";
-  //       activeIndex = nextIndex;
-  //     });
-  //   };
+    mainRef.current.children[activeIndex].setAttribute("data-status", "before");
 
-  //   const handleRightClick = () => {
-  //     const nextIndex =
-  //       activeIndex + 1 <= slides.length - 1 ? activeIndex + 1 : 0;
+    mainRef.current.children[nextIndex].setAttribute(
+      "data-status",
+      "becoming-active-from-after"
+    );
 
-  //     const currentSlide = document.querySelector(
-  //         `[data-index="${activeIndex}"]`
-  //       ),
-  //       nextSlide = document.querySelector(`[data-index="${nextIndex}"]`);
-
-  //     currentSlide.dataset.status = "before";
-
-  //     nextSlide.dataset.status = "becoming-active-from-after";
-
-  //     setTimeout(() => {
-  //       nextSlide.dataset.status = "active";
-  //       activeIndex = nextIndex;
-  //     });
-  //   };
-
-  //   /* -- Mobile Nav Toggle -- */
-
-  //   const nav = document.querySelector("nav");
-
-  //   const handleNavToggle = () => {
-  //     nav.dataset.transitionable = "true";
-
-  //     nav.dataset.toggled = nav.dataset.toggled === "true" ? "false" : "true";
-  //   };
-
-  //   window.matchMedia("(max-width: 800px)").onchange = (e) => {
-  //     nav.dataset.transitionable = "false";
-
-  //     nav.dataset.toggled = "false";
-  //   };
+    setTimeout(() => {
+      mainRef.current.children[nextIndex].setAttribute("data-status", "active");
+      setActiveIndex(nextIndex);
+    });
+  };
 
   return (
-    <main>
+    <main ref={mainRef}>
       <article data-index="0" data-status="active">
-        <div className="article-image-section article-section"></div>
+        <ArticleImage></ArticleImage>
         <ArticleDescription></ArticleDescription>
-        <div className="article-title-section article-section">
-          <h2>Recreation From Scratch</h2>
-          <i className="fa-light fa-plus-large"></i>
-        </div>
-        <ArticleNav></ArticleNav>
-        {/* <div className="article-nav-section article-section">
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleLeftClick()"
-          >
-            <i className="fa-solid fa-arrow-left"></i>
-          </button>
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleRightClick()"
-          >
-            <i className="fa-solid fa-arrow-right"></i>
-          </button>
-        </div> */}
+        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleNav
+          handleLeftClick={handleLeftClick}
+          handleRightClick={handleRightClick}
+        ></ArticleNav>
       </article>
-    
+
       <article data-index="1" data-status="inactive">
-        <div className="article-image-section article-section"></div>
-        <div className="article-description-section article-section">
-          <p>
-            A place where books hang out waiting to be grabbed. But don't be too
-            grabby now, ya hear.
-          </p>
-        </div>
-        <div className="article-title-section article-section">
-          <h2>Wicked Cool Library Shelves</h2>
-          <i className="fa-light fa-plus-large"></i>
-        </div>
-        <div className="article-nav-section article-section">
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleLeftClick()"
-          >
-            <i className="fa-light fa-arrow-left-long"></i>
-          </button>
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleRightClick()"
-          >
-            <i className="fa-light fa-arrow-right-long"></i>
-          </button>
-        </div>
+        <ArticleImage></ArticleImage>
+        <ArticleDescription></ArticleDescription>
+        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleNav
+          handleLeftClick={handleLeftClick}
+          handleRightClick={handleRightClick}
+        ></ArticleNav>
       </article>
 
       <article data-index="2" data-status="inactive">
-        <div className="article-image-section article-section"></div>
-        <div className="article-description-section article-section">
-          <p>
-            The neatest lighthouse you ever saw. Ehh, actually it's kind of
-            messy. But that's why the pic is of the outside.
-          </p>
-        </div>
-        <div className="article-title-section article-section">
-          <h2>Neato Toledo Lighthouse</h2>
-          <i className="fa-light fa-plus-large"></i>
-        </div>
-        <div className="article-nav-section article-section">
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleLeftClick()"
-          >
-            <i className="fa-light fa-arrow-left-long"></i>
-          </button>
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleRightClick()"
-          >
-            <i className="fa-light fa-arrow-right-long"></i>
-          </button>
-        </div>
+        <ArticleImage></ArticleImage>
+        <ArticleDescription></ArticleDescription>
+        <ArticleTitle mainTitleIndex={mainTitleIndex}></ArticleTitle>
+        <ArticleNav
+          handleLeftClick={handleLeftClick}
+          handleRightClick={handleRightClick}
+        ></ArticleNav>
       </article>
+
       <article data-index="3" data-status="inactive">
-        <div className="article-image-section article-section"></div>
-        <div className="article-description-section article-section">
-          <p>
-            The blobiest of blobs nestled deep in the heart of outer space.
-            Well, technically the universe is both infinite and homogeneous so
-            there isn't really a heart, per se.
-          </p>
-        </div>
-        <div className="article-title-section article-section">
-          <h2>Super Space Blob</h2>
-          <i className="fa-light fa-plus-large"></i>
-        </div>
-        <div className="article-nav-section article-section">
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleLeftClick()"
-          >
-            <i className="fa-light fa-arrow-left-long"></i>
-          </button>
-          <button
-            className="article-nav-button"
-            type="button"
-            onClick="handleRightClick()"
-          >
-            <i className="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
+        <ArticleImage></ArticleImage>
+        <ArticleDescription></ArticleDescription>
+        <ArticleTitle mainTitleIndex={activeIndex}></ArticleTitle>
+        <ArticleNav
+          handleLeftClick={handleLeftClick}
+          handleRightClick={handleRightClick}
+        ></ArticleNav>
       </article>
     </main>
   );

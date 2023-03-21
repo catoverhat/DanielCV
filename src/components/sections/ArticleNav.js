@@ -1,19 +1,20 @@
 import "./ArticleNav.css";
 
-const ArticleNav = () => {
+const ArticleNav = ({handleLeftClick, handleRightClick}) => {
+
   return (
     <div className="article-nav-section article-section">
       <button
         className="article-nav-button"
         type="button"
-        onClick="handleLeftClick()"
+        onClick={handleLeftClick}
       >
         <i className="fa-solid fa-arrow-left"></i>
       </button>
       <button
         className="article-nav-button"
         type="button"
-        onClick="handleRightClick()"
+        onClick={handleRightClick}
       >
         <i className="fa-solid fa-arrow-right"></i>
       </button>

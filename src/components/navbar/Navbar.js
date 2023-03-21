@@ -1,9 +1,24 @@
 import "./Navbar.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRef } from "react";
 
 const Navbar = () => {
+  const navRef = useRef('')
+   /* -- Mobile Nav Toggle -- */
+
+  //  const handleNavToggle = () => {
+  //   navRef.current.setAttribute('transitionable', "true");
+
+  //   navRef.current.setAttribute("data-toggled", navRef.current.getAttribute("data-toggled") === "true" ? "false" : "true");
+  // };
+
+  // window.matchMedia("(max-width: 800px)").onchange = (e) => {
+  //   nav.dataset.transitionable = "false";
+
+  //   nav.dataset.toggled = "false";
+  // };
+
   return (
-    <nav data-toggled="false" data-transitionable="false">
+    <nav ref={navRef} data-toggled="false" data-transitionable="false">
       <div id="nav-logo-section" className="nav-section">
         <a href="#">
         <i className="fa-solid fa-eye"></i>
